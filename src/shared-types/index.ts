@@ -4,6 +4,5 @@ export type StepStatusType = 'done' | 'current' | 'not-done'
 
 export type StatusType = {
   progress: number
-  status: 'processing' | 'done'
   step: StepNumberType
 }

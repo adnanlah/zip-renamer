@@ -27,7 +27,13 @@ function Process({ filename, status, handleReturn }: Props): JSX.Element {
             <Title order={2} ta="center" c="gray.1">
               Processing Jury Book archive
             </Title>
-            <Text size="xs" ta="center" c="gray.1" mt="xs">
+            <Text
+              size="xs"
+              ta="center"
+              c="gray.1"
+              mt="xs"
+              style={{ fontFamily: 'var(--mantine-font-family-monospace)' }}
+            >
               {filename}
             </Text>
             <Progress value={status.progress} striped animated color="green" my="xl" />

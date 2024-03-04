@@ -78,8 +78,7 @@ async function renameFiles(table: TableType): Promise<void> {
 export async function processZip(originalZipPath: string): Promise<void> {
   sendStatus({
     progress: 10,
-    step: '1',
-    status: 'processing'
+    step: '1'
   })
 
   const tempUnzipDir = path.join(__dirname, 'temp-extract')
@@ -87,32 +86,28 @@ export async function processZip(originalZipPath: string): Promise<void> {
 
   sendStatus({
     progress: 30,
-    step: '2',
-    status: 'processing'
+    step: '2'
   })
 
   await unzipFile(originalZipPath, tempUnzipDir)
 
   sendStatus({
     progress: 40,
-    step: '3',
-    status: 'processing'
+    step: '3'
   })
 
   const renameTable = await buildRenameTable(tempUnzipDir)
 
   sendStatus({
     progress: 50,
-    step: '4',
-    status: 'processing'
+    step: '4'
   })
 
   await renameFiles(renameTable)
 
   sendStatus({
     progress: 70,
-    step: '5',
-    status: 'processing'
+    step: '5'
   })
 
   // Generate the new output ZIP filename by appending '_renamed' before the extension
@@ -122,8 +117,7 @@ export async function processZip(originalZipPath: string): Promise<void> {
 
   sendStatus({
     progress: 90,
-    step: '6',
-    status: 'processing'
+    step: '6'
   })
 
   await rezipFile(outputZipPath, tempUnzipDir)
@@ -136,8 +130,7 @@ export async function processZip(originalZipPath: string): Promise<void> {
 
   sendStatus({
     progress: 100,
-    step: '7',
-    status: 'done'
+    step: '7'
   })
 
   // Improved Cleanup
@@ -150,15 +143,3 @@ export async function processZip(originalZipPath: string): Promise<void> {
     console.error(`Cleanup error: ${cleanupError.message}`)
   }
 }
-
-// const filePath = process.argv[2]
-// if (!filePath) {
-//   console.error('Please provide the file path as an argument.')
-//   process.exit(1)
-// }
-
-// processZip(filePath)
-//   .then(() => {
-//     console.log('All processing completed.')
-//   })
-//   .catch(console.error)
