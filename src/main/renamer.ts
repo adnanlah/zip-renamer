@@ -3,6 +3,7 @@ import path from 'path'
 import { ContentsType, TableType } from './types'
 import AdmZip from 'adm-zip'
 import { sendStatus } from './helpers'
+import { app } from 'electron'
 
 // const cl = console.log
 
@@ -81,7 +82,7 @@ export async function processZip(originalZipPath: string): Promise<void> {
     step: '1'
   })
 
-  const tempUnzipDir = path.join(__dirname, 'temp-extract')
+  const tempUnzipDir = path.join(app.getPath('appData'), 'temp-extract')
   await fs.ensureDir(tempUnzipDir)
 
   sendStatus({
